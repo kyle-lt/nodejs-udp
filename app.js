@@ -1,3 +1,7 @@
+// Pull in any environment variables suplied by .env file
+const dotenv = require('dotenv');
+dotenv.config();
+
 // Bootstrap the AppD Agent as early as possible!
 var appd = require("appdynamics");
 appd.profile({
