@@ -18,7 +18,12 @@ Jump straight to the [Node.js Agent API Code Explanation](#nodejs-agent-api-code
 From the project root directory, run command:
 
 ```bash
-node run app.js # hit enter to run, you'll see the following log o/p
+node run app.js
+```
+
+After running the command, you'll see the following log o/p:
+
+```bash
 Express is listening for HTTP calls on port 8080
 dgram is listening for UDP packets at 0.0.0.0:8082
 ```
@@ -27,7 +32,7 @@ From a separate terminal shell, send some load, e.g., using netcat:
 
 ```bash
 nc -u 0.0.0.0 8082 # hit enter to establish a socket connection
-hello! # hit enter to send
+hello # hit enter to send
 ```
 
 Back on the initial terminal where the server is running you'll see similar log o/p to the below:
@@ -66,7 +71,7 @@ The Business Transaction begins with the UDP packet being received, and AppD aut
 
 ## Node.js Agent API Code Explanation
 
-Starting on [Line 6 of app.js](#app.js#L6), the Node.js agent is bootstrapped:
+Starting on [Line 6 of app.js](/app.js#L6), the Node.js agent is bootstrapped:
 
 ```node.js
 var appd = require("appdynamics");
@@ -84,7 +89,7 @@ appd.profile({
 
 For easy packaging, this was done in code, but it's recommended to be done via Environment Variables, as discussed in the AppD Docs in the [Node.js Settings Reference](https://docs.appdynamics.com/21.9/en/application-monitoring/install-app-server-agents/node-js-agent/node-js-settings-reference#Node.jsSettingsReference-EnvironmentVariables).
 
-The instrumentation happens in the `socket.on("message")` callback function beginning on [Line 72 of app.js](#app.js#L72).
+The instrumentation happens in the `socket.on("message")` callback function beginning on [Line 72 of app.js](/app.js#L72).
 
 A Business Transaction is started:
 
